@@ -19,10 +19,9 @@ app.get('/', function(req, res){
 io.on('connection', function(socket) {
     console.log('A user connected');
 
-    //event send msg server side to frontend side
-    setTimeout(function(){
-        socket.emit("myCustomEvent",{description: 'A custom message from sever side'});  //emit used to create costom event
-    },3000)
+  socket.on('myCustomEventFromClientSide',function(data){
+    console.log(data)
+  })
 
     socket.on('disconnect', function(){
         console.log('A user disconnected');

@@ -10,9 +10,7 @@
     <p>Hello world</p>
     <script>
         var socket = io();
-        socket.on('myCustomEvent', function(data){
-            document.write(data.description);
-        })
+        socket.emit("myCustomEventFromClientSide", 'A custom message from client side');
     </script>
 </body>
 </html>
