@@ -14,17 +14,23 @@ app.get('/', function(req, res){
     res.sendFile(fileName,options);
     // res.sendFile('index.html',options)
 });
+
+var users = 0;
+
 //conection connected  or disconnected
 //on event catch krne k liye
 io.on('connection', function(socket) {
     console.log('A user connected');
 
-  socket.on('myCustomEventFromClientSide',function(data){
-    console.log(data)
-  })
+    users++;
+    io.sockets.emit('broadcast',{ message: users +' users connected' })
+ 
+
 
     socket.on('disconnect', function(){
         console.log('A user disconnected');
+        users--;
+        io.sockets.emit('broadcast',{ message: users +' users disconnected ' })
     })
 });
 
