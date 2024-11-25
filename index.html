@@ -10,10 +10,14 @@
     <p>Hello world</p>
     <script>
         var socket = io();  
-        socket.on('broadcast', function(data){
+        socket.on('newUserConnect', function(data){
             document.body.innerHTML ="";
             document.write(data.message);
         })
+        // socket.on('broadcast', function(data){
+        //     document.body.innerHTML ="";
+        //     document.write(data.message);
+        // })
     </script>
 </body>
 </html>

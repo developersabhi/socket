@@ -23,14 +23,17 @@ io.on('connection', function(socket) {
     console.log('A user connected');
 
     users++;
-    io.sockets.emit('broadcast',{ message: users +' users connected' })
+    // io.sockets.emit('broadcast',{ message: users +' users connected' })
+    socket.emit('newUserConnect',{ message: users +' Hiii, Dude' }) //msg for new user
  
+    socket.broadcast.emit('newUserConnect',{ message: users + 'Users Connected!' }); // msg for other already connected user
 
 
     socket.on('disconnect', function(){
         console.log('A user disconnected');
         users--;
-        io.sockets.emit('broadcast',{ message: users +' users disconnected ' })
+        // io.sockets.emit('broadcast',{ message: users +' users disconnected ' })
+        socket.broadcast.emit('newUserConnect',{ message: users + 'Users Connected!' }); // msg for other already connected user
     })
 });
 
