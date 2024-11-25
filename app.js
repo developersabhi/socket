@@ -21,7 +21,7 @@ io.on('connection', function(socket) {
 
     //event send msg server side to frontend side
     setTimeout(function(){
-        socket.send('Send message from server side by prereserved events');
+        socket.emit("myCustomEvent",{description: 'A custom message from sever side'});  //emit used to create costom event
     },3000)
 
     socket.on('disconnect', function(){
