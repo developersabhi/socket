@@ -14,7 +14,7 @@ app.get('/', function(req, res){
     res.sendFile(fileName,options);
     // res.sendFile('index.html',options)
 });
-
+//conection connected  or disconnected
 io.on('connection', function(socket) {
     console.log('A user connected');
 
@@ -24,5 +24,5 @@ io.on('connection', function(socket) {
 });
 
 http.listen(3001, function() {
-    console.log(`Server is ready on 3000`)
+    console.log(`Server is ready on 3001`)
 });
