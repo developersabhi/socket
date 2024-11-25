@@ -10,6 +10,9 @@
     <p>Hello world</p>
     <script>
         var socket = io();
+        socket.on('message', function(data){
+            document.write(data);
+        })
     </script>
 </body>
 </html>

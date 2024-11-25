@@ -15,8 +15,14 @@ app.get('/', function(req, res){
     // res.sendFile('index.html',options)
 });
 //conection connected  or disconnected
+//on event catch krne k liye
 io.on('connection', function(socket) {
     console.log('A user connected');
+
+    //event send msg server side to frontend side
+    setTimeout(function(){
+        socket.send('Send message from server side by prereserved events');
+    },3000)
 
     socket.on('disconnect', function(){
         console.log('A user disconnected');
