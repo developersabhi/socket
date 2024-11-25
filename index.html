@@ -9,11 +9,15 @@
 <body>
     <p>Hello world</p>
     <script>
-        var socket = io();  
-        socket.on('newUserConnect', function(data){
-            document.body.innerHTML ="";
-            document.write(data.message);
+        var socket = io('/custom-namespace');  
+        socket.on('testEvent', function(data){
+            document.body.innerHTML ='';
+            document.write(data);
         })
+        // socket.on('newUserConnect', function(data){
+        //     document.body.innerHTML ="";
+        //     document.write(data.message);
+        // })
         // socket.on('broadcast', function(data){
         //     document.body.innerHTML ="";
         //     document.write(data.message);

@@ -17,23 +17,18 @@ app.get('/', function(req, res){
 
 var users = 0;
 
+
+var cnsp =io.of('/custom-namespace');
+
 //conection connected  or disconnected
 //on event catch krne k liye
-io.on('connection', function(socket) {
+cnsp.on('connection', function(socket) {
     console.log('A user connected');
 
-    users++;
-    // io.sockets.emit('broadcast',{ message: users +' users connected' })
-    socket.emit('newUserConnect',{ message: users +' Hiii, Dude' }) //msg for new user
- 
-    socket.broadcast.emit('newUserConnect',{ message: users + 'Users Connected!' }); // msg for other already connected user
-
+    cnsp.emit('testEvent','Tester event call')
 
     socket.on('disconnect', function(){
         console.log('A user disconnected');
-        users--;
-        // io.sockets.emit('broadcast',{ message: users +' users disconnected ' })
-        socket.broadcast.emit('newUserConnect',{ message: users + 'Users Connected!' }); // msg for other already connected user
     })
 });
 
